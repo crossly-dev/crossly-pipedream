@@ -1,26 +1,26 @@
 export default {
-  "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
-  "type": "order.address_available",
-  "created": "2026-05-22T19:08:42.110Z",
-  "data": {
-    "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
-    "saleId": "f9e8d7c6-b5a4-3210-9876-543210fedcba",
-    "platform": "mercari",
-    "platformOrderId": "m81234567890",
-    "listingId": "7d1e2f3a-4b5c-6d7e-8f90-a1b2c3d4e5f6",
-    "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
-    "quantity": 1,
-    "buyerName": "Jane Buyer",
-    "buyerPhone": null,
-    "buyerAddress": {
-      "name": "Jane Buyer",
-      "line1": "1 Main St",
-      "city": "Austin",
-      "state": "TX",
-      "zip": "78701",
-      "country": "US"
+  id: "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+  type: "order.address_available",
+  created: "2026-05-22T19:08:42.110Z",
+  data: {
+    orderId: "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+    saleId: "f9e8d7c6-b5a4-3210-9876-543210fedcba",
+    platform: "mercari",
+    platformOrderId: "m81234567890",
+    listingId: "7d1e2f3a-4b5c-6d7e-8f90-a1b2c3d4e5f6",
+    inventoryItemId: "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+    quantity: 1,
+    buyerName: "Jane Buyer",
+    buyerPhone: null,
+    buyerAddress: {
+      name: "Jane Buyer",
+      line1: "1 Main St",
+      city: "Austin",
+      state: "TX",
+      zip: "78701",
+      country: "US",
     },
-    "addressPending": false,
-    "timestamp": "2026-05-22T19:31:02.000Z"
-  }
+    addressPending: false,
+    timestamp: "2026-05-22T19:31:02.000Z",
+  },
 };
