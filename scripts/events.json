@@ -1,0 +1,435 @@
+{
+  "sale.detected": {
+    "event": "sale.detected",
+    "name": "Sale detected",
+    "description": "A new sale was detected on any platform.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "sale.detected",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "saleId": "f9e8d7c6-b5a4-3210-9876-543210fedcba",
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+        "platform": "poshmark",
+        "platformOrderId": "6655aa1b2c3d4e5f6789abc",
+        "salePrice": 84,
+        "platformFee": 16.79,
+        "netProfit": 47.24,
+        "detectedBy": "extension_poll"
+      }
+    }
+  },
+  "order.created": {
+    "event": "order.created",
+    "name": "Order created",
+    "description": "An order was created from a sale.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "order.created",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "saleId": "f9e8d7c6-b5a4-3210-9876-543210fedcba",
+        "platform": "poshmark",
+        "platformOrderId": "64f1c2a9e8b7d6c5b4a39281",
+        "salePrice": 84,
+        "platformFee": 16.8,
+        "buyerUsername": "buyer123",
+        "buyerName": "Jane Buyer",
+        "buyerPhone": "+15125550123",
+        "buyerAddress": {
+          "name": "Jane Buyer",
+          "line1": "1 Main St",
+          "line2": "Apt 4",
+          "city": "Austin",
+          "state": "TX",
+          "zip": "78701",
+          "country": "US",
+          "phone": "+15125550123"
+        },
+        "addressPending": false,
+        "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+        "listingId": "7d1e2f3a-4b5c-6d7e-8f90-a1b2c3d4e5f6",
+        "sku": "LEV-501-3232",
+        "quantity": 2,
+        "lineItems": [
+          {
+            "lineKey": null,
+            "listingId": "7d1e2f3a-4b5c-6d7e-8f90-a1b2c3d4e5f6",
+            "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+            "platformListingId": "646fa9b73c1e2f4d5a8b9c0d",
+            "sku": "LEV-501-3232",
+            "variantId": null,
+            "quantity": 2,
+            "unitPrice": 42,
+            "total": 84
+          }
+        ],
+        "status": "needs_fulfillment"
+      }
+    }
+  },
+  "order.address_available": {
+    "event": "order.address_available",
+    "name": "Buyer address available",
+    "description": "The buyer's shipping address arrived after the order was created: name, address and phone, ready to ship.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "order.address_available",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "saleId": "f9e8d7c6-b5a4-3210-9876-543210fedcba",
+        "platform": "mercari",
+        "platformOrderId": "m81234567890",
+        "listingId": "7d1e2f3a-4b5c-6d7e-8f90-a1b2c3d4e5f6",
+        "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+        "quantity": 1,
+        "buyerName": "Jane Buyer",
+        "buyerPhone": null,
+        "buyerAddress": {
+          "name": "Jane Buyer",
+          "line1": "1 Main St",
+          "city": "Austin",
+          "state": "TX",
+          "zip": "78701",
+          "country": "US"
+        },
+        "addressPending": false,
+        "timestamp": "2026-05-22T19:31:02.000Z"
+      }
+    }
+  },
+  "order.shipped": {
+    "event": "order.shipped",
+    "name": "Order shipped",
+    "description": "The order shipped: marked shipped, or the carrier's first in-network scan. Once per order.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "order.shipped",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "platform": "poshmark",
+        "trackingNumber": "9405511899561234567890",
+        "carrier": "usps",
+        "shippedAt": "2026-05-23T14:30:00.000Z"
+      }
+    }
+  },
+  "order.delivered": {
+    "event": "order.delivered",
+    "name": "Order delivered",
+    "description": "The carrier reports the package delivered.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "order.delivered",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "platform": "poshmark",
+        "deliveredAt": "2026-05-26T11:14:09.110Z"
+      }
+    }
+  },
+  "order.cancelled": {
+    "event": "order.cancelled",
+    "name": "Order cancelled",
+    "description": "An order was cancelled before it shipped.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "order.cancelled",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "platform": "poshmark",
+        "reason": "Buyer asked to cancel before shipping.",
+        "platformCancel": true
+      }
+    }
+  },
+  "order.refunded": {
+    "event": "order.refunded",
+    "name": "Order refunded",
+    "description": "An order was refunded, in full or in part: the amount, the running total and whether anything is left.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "order.refunded",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "refundId": "5e6f7a8b-9c0d-4e1f-a2b3-c4d5e6f7a8b9",
+        "platform": "ebay",
+        "platformRefundId": "5012345678",
+        "amount": 12.5,
+        "totalRefunded": 12.5,
+        "full": false,
+        "reason": "Arrived with a scuffed corner.",
+        "lineItems": [
+          {
+            "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+            "quantity": 1
+          }
+        ],
+        "source": "api"
+      }
+    }
+  },
+  "refund.issued": {
+    "event": "refund.issued",
+    "name": "Refund issued",
+    "description": "A refund was issued on a platform.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "refund.issued",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "platform": "poshmark",
+        "amount": 12.5,
+        "reason": "Buyer reported missing care label.",
+        "refundedAt": "2026-05-27T09:18:42.110Z"
+      }
+    }
+  },
+  "return.requested": {
+    "event": "return.requested",
+    "name": "Return requested",
+    "description": "A Crossly-marketplace buyer asked to return an order: the reason, their note and photos.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "return.requested",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "returnId": "7c1d2e3f-4a5b-4c6d-8e9f-0a1b2c3d4e5f",
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "purchaseId": "9f8e7d6c-5b4a-4392-8170-6f5e4d3c2b1a",
+        "platform": "crossly",
+        "reason": "damaged",
+        "buyerNote": "Arrived with the corner crushed.",
+        "photoUrls": [
+          "https://cdn.crossly.net/disputes/1.jpg"
+        ]
+      }
+    }
+  },
+  "return.resolved": {
+    "event": "return.resolved",
+    "name": "Return resolved",
+    "description": "A return request closed: refunded in full or in part, no refund, or withdrawn by the buyer.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "return.resolved",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "returnId": "7c1d2e3f-4a5b-4c6d-8e9f-0a1b2c3d4e5f",
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "purchaseId": "9f8e7d6c-5b4a-4392-8170-6f5e4d3c2b1a",
+        "platform": "crossly",
+        "reason": "damaged",
+        "outcome": "refunded",
+        "refundedAmount": 42
+      }
+    }
+  },
+  "listing.created": {
+    "event": "listing.created",
+    "name": "Listing created",
+    "description": "A listing was published on a platform.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "listing.created",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "listingId": "8b1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+        "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+        "platform": "poshmark",
+        "platformListingId": "646fa9b73c1e2f4d5a8b9c0d",
+        "platformListingUrl": "https://poshmark.com/listing/646fa9b73c1e2f4d5a8b9c0d"
+      }
+    }
+  },
+  "listing.price_changed": {
+    "event": "listing.price_changed",
+    "name": "Price changed",
+    "description": "A listing price changed, from any path: editor, repricer, API or bulk edit.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "listing.price_changed",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "listingId": "8b1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+        "oldPrice": 48,
+        "newPrice": 42,
+        "changedAt": "2026-10-02T14:02:11.000Z"
+      }
+    }
+  },
+  "listing.delisted": {
+    "event": "listing.delisted",
+    "name": "Listing delisted",
+    "description": "A platform listing came down, on request or reported gone by the marketplace.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "listing.delisted",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "listingId": "8b1d2e3f-4a5b-6c7d-8e9f-0a1b2c3d4e5f",
+        "platformListingDbId": "2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+        "platform": "poshmark",
+        "reason": "external_delist",
+        "source": "marketplace"
+      }
+    }
+  },
+  "inventory.quantity_changed": {
+    "event": "inventory.quantity_changed",
+    "name": "Stock changed",
+    "description": "An item's stock changed, from any path (a sale, a cancellation, a return, an edit, the API): the counts after the change, and soldOut when none are left.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "inventory.quantity_changed",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "inventoryItemId": "3f4a7d9c-2b8e-4a1f-9c6d-1e2f3a4b5c6d",
+        "sku": "LEV-501-3232",
+        "quantity": 3,
+        "quantityAvailable": 2,
+        "quantityReserved": 1,
+        "quantitySold": 5,
+        "soldOut": false,
+        "reason": "sale",
+        "orderId": "0a1b2c3d-4e5f-6789-abcd-ef0123456789",
+        "saleId": "f9e8d7c6-b5a4-3210-9876-543210fedcba",
+        "platform": "poshmark",
+        "changedAt": "2026-05-22T19:08:42.300Z"
+      }
+    }
+  },
+  "offer.received": {
+    "event": "offer.received",
+    "name": "Offer received",
+    "description": "A buyer made an offer.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "offer.received",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "offerId": "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+        "platform": "poshmark",
+        "listingId": "1f2e3d4c-5b6a-7908-1234-abcdef012345",
+        "buyerHandle": "denimhead_kc",
+        "offerCents": 7500,
+        "receivedAt": "2026-09-11T14:02:11.000Z"
+      }
+    }
+  },
+  "offer.accepted": {
+    "event": "offer.accepted",
+    "name": "Offer accepted",
+    "description": "An offer was accepted, by you or an auto-respond rule.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "offer.accepted",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "offerId": "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+        "platform": "poshmark",
+        "listingId": "1f2e3d4c-5b6a-7908-1234-abcdef012345",
+        "buyerHandle": "denimhead_kc",
+        "offerCents": 7500,
+        "reason": "78.9% of full is between your lines; countering at $89.00 (split the difference).",
+        "automated": true
+      }
+    }
+  },
+  "offer.declined": {
+    "event": "offer.declined",
+    "name": "Offer declined",
+    "description": "An offer was declined.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "offer.declined",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "offerId": "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+        "platform": "poshmark",
+        "listingId": "1f2e3d4c-5b6a-7908-1234-abcdef012345",
+        "buyerHandle": "denimhead_kc",
+        "offerCents": 7500,
+        "reason": "78.9% of full is between your lines; countering at $89.00 (split the difference).",
+        "automated": true
+      }
+    }
+  },
+  "offer.countered": {
+    "event": "offer.countered",
+    "name": "Offer countered",
+    "description": "An offer was countered.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "offer.countered",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "offerId": "9a8b7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+        "platform": "poshmark",
+        "listingId": "1f2e3d4c-5b6a-7908-1234-abcdef012345",
+        "buyerHandle": "denimhead_kc",
+        "offerCents": 7500,
+        "counterCents": 8900,
+        "reason": "78.9% of full is between your lines; countering at $89.00 (split the difference).",
+        "automated": true
+      }
+    }
+  },
+  "message.received": {
+    "event": "message.received",
+    "name": "Message received",
+    "description": "A buyer sent you a message.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "message.received",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "conversationId": "5d4c3b2a-1f0e-9d8c-7b6a-5f4e3d2c1b0a",
+        "platform": "poshmark",
+        "buyerUsername": "denimhead_kc",
+        "messageBody": "Would you take $75 + free shipping?"
+      }
+    }
+  },
+  "connection.disconnected": {
+    "event": "connection.disconnected",
+    "name": "Connection lost",
+    "description": "A platform session died; syncing for it has stopped until you reconnect.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "connection.disconnected",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "platform": "poshmark",
+        "accountSlot": 1,
+        "reason": "session_expired",
+        "detectedAt": "2026-09-11T14:02:11.000Z"
+      }
+    }
+  },
+  "automation.failed": {
+    "event": "automation.failed",
+    "name": "Automation failed",
+    "description": "An automation run failed.",
+    "sample": {
+      "id": "9c3e1a2b-4d5f-6789-abcd-ef0123456789",
+      "type": "automation.failed",
+      "created": "2026-05-22T19:08:42.110Z",
+      "data": {
+        "ruleId": "8c7b6a59-4d3e-2f1a-0b9c-8d7e6f5a4b3c",
+        "ruleName": "Drop price 5% every 7 days",
+        "actionId": "listing.price_drop",
+        "error": "poshmark session expired",
+        "consecutiveFailures": 3
+      }
+    }
+  }
+}

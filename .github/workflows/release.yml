@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  release:
+    needs: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Check tag matches package version
+        run: |
+          v="$(node -p "require('./components/crossly/package.json').version")"
+          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != components/crossly/package.json $v"; exit 1; }
+      - name: Package components
+        run: |
+          mkdir -p dist
+          (cd components && zip -r -X "../dist/crossly-pipedream-${GITHUB_REF_NAME}.zip" crossly)
+          (cd dist && sha256sum *.zip > SHA256SUMS)
+      - uses: actions/upload-artifact@v7
+        with:
+          name: crossly-pipedream
+          path: dist/
+      - uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: dist/*.zip
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "$GITHUB_REF_NAME" \
+            --notes "Crossly Pipedream components ${GITHUB_REF_NAME}. See CHANGELOG.md. Verify: gh attestation verify crossly-pipedream-${GITHUB_REF_NAME}.zip -R ${GITHUB_REPOSITORY}"
+      # Optional: publish to your own Pipedream workspace. Off unless the repo
+      # variable PD_PUBLISH is 'true' and secret PD_API_KEY is set.
+      - name: Publish to Pipedream workspace
+        if: vars.PD_PUBLISH == 'true'
+        env:
+          PD_API_KEY: ${{ secrets.PD_API_KEY }}
+        run: |
+          curl -fsSL https://cli.pipedream.com/install | sh
+          mkdir -p ~/.config/pipedream
+          printf 'api_key = %s\n' "$PD_API_KEY" > ~/.config/pipedream/config
+          (cd components/crossly && npm install --omit=dev --no-audit --no-fund)
+          for f in components/crossly/actions/*/*.mjs components/crossly/sources/*/*.mjs; do
+            case "$f" in */common/*|*/test-event.mjs) continue;; esac
+            pd publish "$f"
+          done

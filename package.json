@@ -1,0 +1,25 @@
+{
+  "name": "crossly-pipedream",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Crossly components for Pipedream: app, instant sources and actions.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "check": "node scripts/check-syntax.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test test/",
+    "generate": "node scripts/generate-sources.mjs",
+    "ci": "npm run check && npm run lint && npm run validate && npm test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@pipedream/platform": "^3.1.0",
+    "eslint": "^9.39.0",
+    "globals": "^16.5.0"
+  }
+}

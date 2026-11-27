@@ -1,0 +1,19 @@
+{
+  "name": "@pipedream/crossly",
+  "version": "0.1.0",
+  "description": "Pipedream Crossly Components",
+  "main": "crossly.app.mjs",
+  "keywords": [
+    "pipedream",
+    "crossly"
+  ],
+  "homepage": "https://pipedream.com/apps/crossly",
+  "author": "Crossly <noreply@crossly.net> (https://crossly.net/)",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pipedream/platform": "^3.1.0"
+  }
+}
